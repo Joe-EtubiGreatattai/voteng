@@ -1,13 +1,30 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import heroImg from '../assets/hero-2.jpeg';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const Home = () => {
   useScrollReveal();
+  const [donateConfig, setDonateConfig] = useState(null);
+  const [copyDone, setCopyDone] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    fetch(`${API_URL}/settings/donate`)
+      .then((r) => r.json())
+      .then((j) => { if (j.data?.enabled) setDonateConfig(j.data); })
+      .catch(() => {});
   }, []);
+
+  const copyAccount = () => {
+    if (!donateConfig?.accountNumber) return;
+    navigator.clipboard.writeText(donateConfig.accountNumber).then(() => {
+      setCopyDone(true);
+      setTimeout(() => setCopyDone(false), 2000);
+    });
+  };
 
   return (
     <>
@@ -23,6 +40,10 @@ const Home = () => {
         <div className="hero-actions">
           <Link className="btn-primary" to="/partnership" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Partner with us</Link>
           <Link className="btn-ghost" to="/how" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>See how it works</Link>
+        </div>
+
+        <div style={{ marginTop: '64px', width: '100%', maxWidth: '960px', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(0,197,102,0.2)', boxShadow: '0 32px 80px rgba(0,0,0,0.12)', animation: 'fadeUp 0.8s 0.5s ease both' }}>
+          <img src={heroImg} alt="Citizens monitoring elections at polling units across Nigeria" style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} />
         </div>
       </section>
 
@@ -149,6 +170,54 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* DONATE */}
+      <section className="donate-section reveal">
+        <div className="donate-inner">
+          <div className="section-label">Support the mission</div>
+          <h2>Help keep every vote visible.</h2>
+          <p>VoteWatch NG runs on citizen belief. Your contribution keeps the platform independent, the infrastructure running, and the data free for every Nigerian.</p>
+          <div className="donate-amounts">
+            <button className="donate-pill">₦1,000</button>
+            <button className="donate-pill">₦5,000</button>
+            <button className="donate-pill active">₦10,000</button>
+            <button className="donate-pill">₦50,000</button>
+            <button className="donate-pill">Custom</button>
+          </div>
+
+          {donateConfig ? (
+            <div className="donate-account">
+              <div className="donate-account-label">Bank Transfer</div>
+              <div className="donate-account-bank">{donateConfig.bankName}</div>
+              <div className="donate-account-row">
+                <div>
+                  <div className="donate-account-field-label">Account Number</div>
+                  <div className="donate-account-number">{donateConfig.accountNumber}</div>
+                </div>
+                <button className="donate-copy-btn" onClick={copyAccount} title="Copy account number">
+                  {copyDone ? (
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  ) : (
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                  )}
+                  {copyDone ? 'Copied!' : 'Copy'}
+                </button>
+              </div>
+              <div className="donate-account-name-row">
+                <div className="donate-account-field-label">Account Name</div>
+                <div className="donate-account-name">{donateConfig.accountName}</div>
+              </div>
+              {donateConfig.note && (
+                <div className="donate-account-note">{donateConfig.note}</div>
+              )}
+            </div>
+          ) : (
+            <button className="btn-donate">Donate now</button>
+          )}
+
+          <p className="donate-note">All contributions go directly to platform operations and infrastructure.</p>
         </div>
       </section>
     </>

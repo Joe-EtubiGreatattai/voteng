@@ -47,6 +47,7 @@ const Navbar = () => {
       </button>
 
       <div className={`nav-links ${isOpen ? 'open' : ''}`}>
+        <a className="nav-link-btn" href={import.meta.env.VITE_DASHBOARD_URL || 'http://localhost:5174'} target="_blank" rel="noopener noreferrer">Live dashboard</a>
         <Link className="nav-link-btn" to="/how" onClick={closeMenuAndScrollToTop}>How it works</Link>
         <Link className="nav-link-btn" to="/features" onClick={closeMenuAndScrollToTop}>Features</Link>
         <Link className="nav-link-btn" to="/partnership" onClick={closeMenuAndScrollToTop}>Partnership</Link>
