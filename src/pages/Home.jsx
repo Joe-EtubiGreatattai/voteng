@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useEffect, useState } from 'react';
-import heroImg from '../assets/hero-2.jpeg';
+import heroImg from '../assets/5.jpeg';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
@@ -33,17 +33,22 @@ const Home = () => {
         <div className="orb orb-1"></div>
         <div className="orb orb-2"></div>
 
-        <div className="hero-eyebrow">Nigeria 2027 General Elections</div>
-        <h1>Every vote counted. <br /><span className="underline-green">By the people.</span></h1>
-        <p className="hero-sub">A real-time, crowd-sourced election monitoring platform. Citizens and accredited observers
-          upload polling unit results as they happen — giving Nigeria a transparent parallel tally.</p>
-        <div className="hero-actions">
-          <Link className="btn-primary" to="/partnership" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Partner with us</Link>
-          <Link className="btn-ghost" to="/how" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>See how it works</Link>
+        <div className="hero-eyebrow">NG General Elections</div>
+        <h1>VoteWatch<span className="accent">NG</span></h1>
+        <p className="hero-tagline">CITIZEN-LEAD VOTE COUNT</p>
+
+        {/* Ballot box image */}
+        <div className="hero-img-box" style={{ animation: 'fadeUp 0.8s 0.3s ease both' }}>
+          <img src={heroImg} alt="Ballot box — Our Past, Our Present, Our Future" className="hero-img-main" />
         </div>
 
-        <div style={{ marginTop: '64px', width: '100%', maxWidth: '960px', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(0,197,102,0.2)', boxShadow: '0 32px 80px rgba(0,0,0,0.12)', animation: 'fadeUp 0.8s 0.5s ease both' }}>
-          <img src={heroImg} alt="Citizens monitoring elections at polling units across Nigeria" style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }} />
+        <p className="hero-sub" style={{ animation: 'fadeUp 0.8s 0.45s ease both' }}>
+          Upload real-time polling unit results.
+        </p>
+
+        <div className="hero-actions" style={{ animation: 'fadeUp 0.8s 0.55s ease both' }}>
+          <Link className="btn-lemon" to="/contact" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Get started</Link>
+          <Link className="btn-ghost" to="/how" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>See how it works</Link>
         </div>
       </section>
 
@@ -71,12 +76,11 @@ const Home = () => {
       <section className="problem" id="problem">
         <div className="problem-inner">
           <div className="reveal">
-            <div className="section-label">The problem</div>
-            <h2>Election transparency has always depended on who controls the count</h2>
-            <p>Nigeria's 2023 elections were marked by allegations of result manipulation, delayed official tallies, and a
+            <div className="section-label">THE GAP</div>
+            <h2>Election transparency depends on concerted citizen action, and by no means an opportunity to witch-hunt incumbent political actors.</h2>
+            <p>General elections cannot continue to be marked by allegations of result manipulation, delayed official tallies, and a
               public left without a credible way to independently verify what happened at the polling unit level.</p>
-            <p>Accredited observers exist — but their data stays siloed. The public only sees what INEC eventually
-              publishes. VoteWatch changes that.</p>
+            <p>Accredited observers, Party agents and Patriotic electorates can guarantee transparency in our elections—VOTEWATCH helps you do that.</p>
           </div>
           <ul className="issue-list reveal">
             <li className="issue-item">

@@ -13,9 +13,8 @@ const Partnership = () => {
     <section className="partnership" id="partnership" style={{ paddingTop: '150px' }}>
       <div className="partnership-inner reveal">
         <div className="section-label">Partnership model</div>
-        <h2>This platform needs you to work</h2>
-        <p>Technology alone cannot guarantee election integrity. VoteWatch is designed as a partnership — between a
-          capable tech team and organisations with on-the-ground presence, legal standing, and public trust.</p>
+        <h2>VOTEWATCH is citizen action driven.</h2>
+        <p>Technology can guarantee electoral integrity; partnership with patriotic electorates will guarantee impetus: lend your voice.</p>
         <div className="partner-roles">
           <div className="role-pill">
             <span className="role-pill-icon">⚖️</span>

@@ -21,9 +21,9 @@ const Contact = () => {
 
   return (
     <section className="cta-section" id="contact" style={{ paddingTop: '150px' }}>
-      <div className="section-label reveal">Get involved</div>
-      <h2 className="reveal">2027 is closer than you think.</h2>
-      <p className="reveal">Leave your contact and we'll reach out to discuss how we build this together.</p>
+      <div className="section-label reveal">GET INVOLVED</div>
+      <h2 className="reveal">GENERAL ELECTIONS DEMAND CITIZEN ACTION.</h2>
+      <p className="reveal">Leave your contact and we’ll do our patriotic best to reach you.</p>
       <div className="cta-email reveal">
         <input 
           type="email" 

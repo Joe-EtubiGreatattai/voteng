@@ -12,7 +12,7 @@ const Features = () => {
     <section id="features" style={{ padding: '150px 48px 100px' }}>
       <div className="features">
         <div className="section-label reveal">Platform features</div>
-        <h2 className="reveal">Built for trust,<br />designed for scale</h2>
+        <h2 className="reveal">Built for credible elections,<br />designed for transparency</h2>
         <div className="feature-grid reveal">
           <div className="feature-card featured">
             <div>
